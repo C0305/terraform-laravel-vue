@@ -53,10 +53,11 @@ resource "aws_cloudfront_distribution" "site" {
       }
     }
 
-    viewer_protocol_policy = "allow-all"
     min_ttl                = 0
-    default_ttl            = var.cache_default_ttl
-    max_ttl                = var.cache_max_ttl
+    default_ttl            = 3600
+    max_ttl                = 86400
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
   }
 
   restrictions {
@@ -72,7 +73,7 @@ resource "aws_cloudfront_distribution" "site" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate.certificate.arn
+    cloudfront_default_certificate = true
   }
 }
 
