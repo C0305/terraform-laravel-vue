@@ -71,10 +71,6 @@ resource "aws_cloudfront_distribution" "site" {
     Environment = var.s3_bucket_env
     Project     = var.project_key
   }
-
-  viewer_certificate {
-    cloudfront_default_certificate = true
-  }
 }
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
