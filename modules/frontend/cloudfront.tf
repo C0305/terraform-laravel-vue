@@ -22,9 +22,11 @@ resource "aws_cloudfront_distribution" "site" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn            = aws_acm_certificate.certificate.arn
+    ssl_support_method             = aws_acm_certificate.certificate.arn == "" ? "" : "sni-only"
+    minimum_protocol_version       = "TLSv1"
+    cloudfront_default_certificate = aws_acm_certificate.certificate.arn == "" ? true : false
   }
-
   custom_error_response {
     error_code         = 403
     response_code      = 200
