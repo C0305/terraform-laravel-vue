@@ -1,6 +1,6 @@
 # Infrastructure
 
-This repository contains the implementation of infrastructure for a Vuejs SPA app and a Laravel API over AWS. Currently, this code is only for the SPA Part
+This repository contains the infrastructure implementation for a Vuejs SPA application and a Laravel API over AWS. Currently, this repository only has the frontend module
 
 # Requirements
 1. a `terraform.tfvars` with the values to:
